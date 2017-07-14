@@ -24,9 +24,8 @@ services:
       LC_TYPE: ja_JP.UTF-8
       LANG: ja_JP.UTF-8
       TERM: xterm
-      HUB: $HUB
-      SOURCE: $SOURCE
       DIR: $DIR
+      MODULE: $MODULE
 
 volumes:
   tx-python:
