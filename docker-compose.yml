@@ -1,0 +1,35 @@
+version: '2'
+
+##  環境変数$DIRは対象のソースフォルダで事前に設定しておく必要があります。
+services:
+  main:
+    build:
+      context: .
+      args:
+        - user=docker
+    image: tx-python
+    container_name: tx-python
+    network_mode: "host"
+    tty: true
+    volumes:
+      - tx-python:/home/docker
+      - $HOME/$DIR:/home/docker/source
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: $DISPLAY
+      XMODIFIERS: $XMODIFIERS
+      XIM: fcitx
+      GTK_IM_MODULE: $GTK_IM_MODULE
+      QT_IM_MODULE: $QT_IM_MODULE
+      LC_TYPE: ja_JP.UTF-8
+      LANG: ja_JP.UTF-8
+      TERM: xterm
+      HUB: $HUB
+      SOURCE: $SOURCE
+      DIR: $DIR
+
+volumes:
+  tx-python:
+    driver: local
+
+##
